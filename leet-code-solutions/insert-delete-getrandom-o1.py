@@ -1,24 +1,46 @@
-class RandomizedSet:
+class RandomizedSet(object):
 
     def __init__(self):
-        self.randomset = set()       
-
-    def insert(self, val: int) -> bool:
+        self.randomset = {}
+        self.arr = []
+        self.length = 0
+        
+    def insert(self, val):
         if val in self.randomset:
             return False
         
-        self.randomset.add(val)
+        self.randomset[val] = self.length
+        self.length += 1
+        self.arr.append(val)
         return True
+        
 
-    def remove(self, val: int) -> bool:
+    def remove(self, val):
         if val not in self.randomset:
             return False
 
-        self.randomset.remove(val)
-        return True
+        indo = self.randomset[val]
 
-    def getRandom(self) -> int:
-        return random.choice(list(self.randomset))
+        if indo == self.length - 1:
+            del self.randomset[val]
+            self.arr.pop()
+            self.length -= 1
+            return True
+
+        self.arr[indo], self.arr[-1] = self.arr[-1], self.arr[indo]
+        self.arr.pop()
+        del self.randomset[val]
+        self.randomset[self.arr[indo]] = indo
+        self.length -= 1
+        
+        return True
+        
+
+    def getRandom(self):
+        """
+        :rtype: int
+        """
+        return random.choice(self.arr)
         
 
 
