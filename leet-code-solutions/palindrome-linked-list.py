@@ -3,29 +3,19 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
-from copy import deepcopy
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        non_rev = copy.deepcopy(head)
-        new_list = None
+        listo = []
         current = head
-        count = 0
+        n = 0
         while current:
-            count+=1
-            nextonode = current.next
-            current.next = new_list
-            new_list = current
-            current = nextonode
-        
-        rev_list = new_list
+            listo.append(current.val)
+            current = current.next
+            n+=1
+        for i in range(n//2):
+            if listo[i] != listo[n-i-1]:
+                return False
+        return True
         
 
-        isthere = True
-        while non_rev and rev_list:
-            if(non_rev.val != rev_list.val):
-                isthere = False
-                break
-            else:
-                non_rev = non_rev.next
-                rev_list = rev_list.next
-        return isthere
+        
