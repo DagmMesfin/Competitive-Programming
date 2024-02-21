@@ -10,12 +10,12 @@ class Solution:
         while curr:
             N+=1
             curr = curr.next
-        print(N)
+
         ans = []
         curr = head
         moves = N//k 
         fmr = N%k
-        rem = N
+        
         for i in range(1, k+1):
             ans.append(curr)
             prev = ListNode()
