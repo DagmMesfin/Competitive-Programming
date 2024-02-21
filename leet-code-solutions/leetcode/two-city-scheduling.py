@@ -1,5 +1,5 @@
-class Solution:
-    def twoCitySchedCost(self, costs: List[List[int]]) -> int:
+class Solution(object):
+    def twoCitySchedCost(self, costs):
         n = len(costs)//2
         a = n+0
         b = n+0
@@ -23,5 +23,4 @@ class Solution:
                     b-=1
         
         return sumo
-            
         
