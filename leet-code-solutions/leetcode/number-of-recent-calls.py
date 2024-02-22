@@ -1,13 +1,25 @@
 class RecentCounter(object):
 
     def __init__(self):
-        self.pingo = []
+        self.start = None
+        self.end = None
+        self.length = 0
 
     def ping(self, t):
-        self.pingo.append(t)
-        while self.pingo[0] < (t-3000):
-            self.pingo.pop(0)
-        return len(self.pingo)
+        newnode = ListNode(t)
+        if not self.start:
+            self.start = newnode
+            self.end = newnode
+        else:
+            self.end.next = newnode
+            self.end = newnode
+        self.length+=1
+
+        while self.start and self.length and self.start.val < t-3000:
+            self.start = self.start.next
+            self.length -= 1
+
+        return self.length
         
 
 
