@@ -4,9 +4,15 @@ class Solution:
         if n<0:
             x = 1/x
             n = abs(n)
-        while n:
+        def subPwr(n,x,prod):
+            if n == 0:
+                return prod
             if n%2:
                 prod*= x
-            x*=x
+            x**=2
             n//=2
+            return subPwr(n,x,prod)
+
+        prod = subPwr(n,x,prod)
+
         return prod
