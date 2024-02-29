@@ -5,20 +5,6 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def mycmp(self,a, b): 
-        if a[1] > b[1]: 
-            return 1
-        elif a[1] == b[1]:
-            if a[0] > b[0]:
-                return 1
-            elif a[0] < b[0]:
-                return -1
-            else:
-                return 0
-        elif a[1] < b[1]: 
-            return -1
-        else: 
-            return 0
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         arr = defaultdict(list)
         res = []
