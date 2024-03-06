@@ -1,10 +1,13 @@
 class Solution:
     def mySqrt(self, x: int) -> int:
-        if x<=1:
-            return x
-        s = 1
-        square = s*s
-        while x>=square:
-            s+=1
-            square = s*s
-        return s-1
+        left,right = -1,x+1
+
+        while left+1<right:
+            mid = (left+right)//2
+            if mid**2 > x:
+                right = mid
+            elif mid**2 < x:
+                left = mid
+            else:
+                return mid
+        return left
