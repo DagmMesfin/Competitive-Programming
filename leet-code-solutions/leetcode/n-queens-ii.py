@@ -1,13 +1,14 @@
 class Solution:
     def totalNQueens(self, n: int) -> int:
-        board = []
+        count = 0
         cols = set()
         n_idx = set()
         p_idx = set()
         listo = []
         def boardo(row):
+            nonlocal count
             if row >= n:
-                board.append(listo.copy())
+                count+=1
                 return True
             letter = ["."]*n
             for col in range(n):
@@ -26,5 +27,5 @@ class Solution:
                     p_idx.remove(row+col)
                     letter[col] = "."
         boardo(0)
-        return len(board)
+        return count
 
